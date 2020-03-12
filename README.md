@@ -4,7 +4,7 @@ Hash tables are arguably the single most important data structures in existence.
 
 ## What is a hash table?
 
-Underneath the hood, a hash table is simply an array with its elements indexed by a hashed key. Like arrays, hash tables are initialized to a fixed size and inserting, deleting, and reading elements within those boundaries can be accomplished in constant time, or O(1).
+Underneath the hood, a hash 
 
 ![Hash Table](img/HashTableImage.png)
 

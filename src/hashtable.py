@@ -1,21 +1,24 @@
 # '''
 # Linked List hash table key/value pair
 # '''
+
+
 class LinkedPair:
     def __init__(self, key, value):
         self.key = key
         self.value = value
         self.next = None
 
+
 class HashTable:
     '''
     A hash table that with `capacity` buckets
     that accepts string keys
     '''
+
     def __init__(self, capacity):
         self.capacity = capacity  # Number of buckets in the hash table
         self.storage = [None] * capacity
-
 
     def _hash(self, key):
         '''
@@ -23,8 +26,8 @@ class HashTable:
 
         You may replace the Python hash with DJB2 as a stretch goal.
         '''
-        return hash(key)
 
+        return hash(key)
 
     def _hash_djb2(self, key):
         '''
@@ -34,14 +37,13 @@ class HashTable:
         '''
         pass
 
-
     def _hash_mod(self, key):
         '''
         Take an arbitrary key and return a valid integer index
         within the storage capacity of the hash table.
         '''
         return self._hash(key) % self.capacity
-
+    # Given a key, the algorithm computes an index that suggests where the entry can be found:
 
     def insert(self, key, value):
         '''
@@ -54,20 +56,19 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
 
-
+        # find index of given key with hash_mod function above
+        index = self._hash_mod(key)
 
     def remove(self, key):
-        '''
-        Remove the value stored with the given key.
-
-        Print a warning if the key is not found.
-
-        Fill this in.
-        '''
         pass
+        '''
+            Remove the value stored with the given key.
 
+            Print a warning if the key is not found.
+
+            Fill this in.
+            '''
 
     def retrieve(self, key):
         '''
@@ -79,7 +80,6 @@ class HashTable:
         '''
         pass
 
-
     def resize(self):
         '''
         Doubles the capacity of the hash table and
@@ -87,34 +87,33 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
-
+        self.capacity = self.capacity * 2  # double capacity
 
 
 if __name__ == "__main__":
     ht = HashTable(2)
 
-    ht.insert("line_1", "Tiny hash table")
-    ht.insert("line_2", "Filled beyond capacity")
-    ht.insert("line_3", "Linked list saves the day!")
+print(ht.insert("line_1", "Tiny hash table"))
+ht.insert("line_2", "Filled beyond capacity")
+ht.insert("line_3", "Linked list saves the day!")
 
-    print("")
+print("")
 
-    # Test storing beyond capacity
-    print(ht.retrieve("line_1"))
-    print(ht.retrieve("line_2"))
-    print(ht.retrieve("line_3"))
+# Test storing beyond capacity
+print(ht.retrieve("line_1"))
+print(ht.retrieve("line_2"))
+print(ht.retrieve("line_3"))
 
-    # Test resizing
-    old_capacity = len(ht.storage)
-    ht.resize()
-    new_capacity = len(ht.storage)
+# Test resizing
+old_capacity = len(ht.storage)
+ht.resize()
+new_capacity = len(ht.storage)
 
-    print(f"\nResized from {old_capacity} to {new_capacity}.\n")
+print(f"\nResized from {old_capacity} to {new_capacity}.\n")
 
-    # Test if data intact after resizing
-    print(ht.retrieve("line_1"))
-    print(ht.retrieve("line_2"))
-    print(ht.retrieve("line_3"))
+# Test if data intact after resizing
+print(ht.retrieve("line_1"))
+print(ht.retrieve("line_2"))
+print(ht.retrieve("line_3"))
 
-    print("")
+print("")
