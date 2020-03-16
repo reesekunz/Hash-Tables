@@ -1,5 +1,4 @@
 import time
-# uses hashlib.sha256() - so secure not even the govt can crack it. Never get a collison.
 import hashlib
 import bcrypt
 
@@ -15,16 +14,7 @@ class DynamicArray:
         # check to see if array is full before inserting
         if self.count == self.capacity:
             self.double_size()
-            # print("Array is full, sorry dood.")
-            # return
-
         self.storage[index] = value  # go to an index and put a value there
-
-        # [1, 2, 3, 4, None, None, None, None]  # this is our self.storage
-        # this is what we want it to be after we insert (5) at index 2.
-        # [1, 2, 5, 3, 4, None, None, None]
-
-        # count backwards to whatever index youre inserting at.
         # Start at None, count backwards by 1 until we get to the index we selected (2), shift everything over by 1.
         for index in range(self.count, index, -1):
             # index -1 because we want to set the index at what is before it since shifting each one over.
@@ -38,8 +28,6 @@ class DynamicArray:
         # Check is array is full
         if self.count == self.capacity:
             self.double_size()
-            # print("Array is full, sorry dood.")
-            # return
         # If array isnt full, insert value at end of array(find end using self.count)
         self.storage[self.count] = value
         self.count += 1
