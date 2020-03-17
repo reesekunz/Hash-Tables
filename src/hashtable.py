@@ -116,38 +116,39 @@ class HashTable:
         Fill this in.
         '''
         self.capacity = self.capacity * 2  # double capacity
-        new_storage = [None] * self.capactiy
+        new_storage = [None] * self.capacity
         # We dont know what index stuff will be stored at like we did with the dynamic array, so need to iterate through entire array
         # ex: [None, (key, value), None, None, (key, value) ]
         # copy stuff into new array
-        for index in (len(self.storage)):
-            new_storage[index] = old_storage[index]
+        for index in range(0, len(self.storage)):
+            new_storage[index] = self.storage[index]
+        self.storage = new_storage
 
 
 if __name__ == "__main__":
     ht = HashTable(2)
 
-print(ht.insert("line_1", "Tiny hash table"))
-ht.insert("line_2", "Filled beyond capacity")
-ht.insert("line_3", "Linked list saves the day!")
+    print(ht.insert("line_1", "Tiny hash table"))
+    ht.insert("line_2", "Filled beyond capacity")
+    ht.insert("line_3", "Linked list saves the day!")
 
-print("")
+    print("")
 
-# Test storing beyond capacity
-print(ht.retrieve("line_1"))
-print(ht.retrieve("line_2"))
-print(ht.retrieve("line_3"))
+    # Test storing beyond capacity
+    print(ht.retrieve("line_1"))
+    print(ht.retrieve("line_2"))
+    print(ht.retrieve("line_3"))
 
-# Test resizing
-old_capacity = len(ht.storage)
-ht.resize()
-new_capacity = len(ht.storage)
+    # Test resizing
+    old_capacity = len(ht.storage)
+    ht.resize()
+    new_capacity = len(ht.storage)
 
-print(f"\nResized from {old_capacity} to {new_capacity}.\n")
+    print(f"\nResized from {old_capacity} to {new_capacity}.\n")
 
-# Test if data intact after resizing
-print(ht.retrieve("line_1"))
-print(ht.retrieve("line_2"))
-print(ht.retrieve("line_3"))
+    # Test if data intact after resizing
+    print(ht.retrieve("line_1"))
+    print(ht.retrieve("line_2"))
+    print(ht.retrieve("line_3"))
 
-print("")
+    print("")
